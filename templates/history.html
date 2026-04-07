@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+        .box {
+            width: 400px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .item {
+            background: #1c1c1c;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,255,200,0.2);
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #00ffcc;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📊 Action History</h2>
+
+<div class="box">
+    {% for item in data %}
+        <div class="item">{{ item[0] }}</div>
+    {% endfor %}
+</div>
+
+<br>
+<a href="/dashboard"><button>⬅ Back</button></a>
+
+</body>
+</html>

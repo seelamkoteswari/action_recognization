@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .video-box {
+            margin: 20px auto;
+            border: 5px solid #00ffcc;
+            border-radius: 15px;
+            width: 660px;
+            padding: 10px;
+        }
+
+        img {
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .start {
+            background: green;
+            color: white;
+        }
+
+        .stop {
+            background: red;
+            color: white;
+        }
+
+        .nav button {
+            background: #eee;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🚀 Action Recognition Dashboard</h2>
+
+<div class="video-box">
+    <!-- ✅ IMPORTANT: video stream -->
+    <img id="video" src="/video" width="640" height="480">
+</div>
+
+<br>
+
+<!-- ✅ Controls -->
+<button class="start" onclick="startCam()">Start Camera</button>
+<button class="stop" onclick="stopCam()">Stop Camera</button>
+
+<div class="nav">
+    <a href="/history"><button>📊 History</button></a>
+    <a href="/logout"><button>🚪 Logout</button></a>
+</div>
+
+<script>
+function startCam(){
+    fetch('/start_camera')
+    .then(() => {
+        // reload stream safely
+        document.getElementById("video").src = "/video";
+    });
+}
+
+function stopCam(){
+    fetch('/stop_camera')
+    .then(() => {
+        document.getElementById("video").src = "/video";
+    });
+}
+</script>
+
+</body>
+</html>
